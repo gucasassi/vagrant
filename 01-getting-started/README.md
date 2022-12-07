@@ -1,3 +1,5 @@
+<font size="2">10 minutes</font>
+
 # Getting Started
 
 In this tutorial, you will create your first development environment with [Vagrant](https://developer.hashicorp.com/vagrant/docs). This quick start provides a brief introduction to [Vagrant](https://developer.hashicorp.com/vagrant/docs), its prerequisites, and an overview of the most important [Vagrant](https://developer.hashicorp.com/vagrant/docs) commands to understand.</br></br>
@@ -12,7 +14,7 @@ mkdir getting-started
 ````
 </br>
 
-Once the directory is created, we will access it with the `cd`command.</br></br>
+Once the directory is created, we will access it with the `cd` command.</br></br>
 
 ````sh
 cd getting-started
@@ -41,8 +43,12 @@ the comments in the Vagrantfile as well as documentation on
 ````
 </br>
 
-You now have a `Vagrantfile` in your current directory.</br></br>
+You now have a `Vagrantfile` in your current directory. You can validate the creation of the `Vagrantfile` with the `ls` command.</br></br>
 
+````sh
+-a----        07/12/2022     19:41           3090 Vagrantfile
+````
+</br>
 
 ## Bring up a virtual machine
 
@@ -113,19 +119,18 @@ Current machine states:
 
 default                 running (virtualbox)
 
-The VM is running. To stop this VM, you can run `vagrant halt` to shut it down forcefully, or 
-you can run `vagrant suspend` to simply suspend the virtual machine. In either case, 
-to restart it again, simply run `vagrant up`.
+The VM is running. To stop this VM, you can run `vagrant halt` to 
+shut it down forcefully, or you can run `vagrant suspend` to simply 
+suspend the virtual machine. In either case, to restart it again, 
+simply run `vagrant up`.
 ````
 </br>
 
-As we can see, there is a machine running with [Virtualbox](https://www.virtualbox.org). At the moment, let's ignore the message that tells us how to stop the **VM**. At the end of this guide we will see how we can [shut it down](#halt-vs-suspense), [suspend](#halt-vs-suspense) and [restart](#restart-the-vm) a **VM**.
-
-So far we have been able to build our virtual machine, but how do we access it?</br></br>
+As we can see, there is a machine running with [Virtualbox](https://www.virtualbox.org). At the moment, let's ignore the message that tells us how to stop the **VM**. At the end of this guide we will see how we can [suspend](#suspense), [shut down](#halt) and [restart](#restart-the-vm) a **VM**. At this point, we have been able to build our virtual machine, but how do we access it?</br></br>
 
 ## SSH into the machine
 
-Vagrant provide us the `ssh` command, this will connect into a running Vagrant machine and give us access to a shell.</br></br>
+[Vagrant](https://developer.hashicorp.com/vagrant/docs) provide us the `ssh` command, this will connect into a running [Vagrant](https://developer.hashicorp.com/vagrant/docs) machine and give us access to a shell.</br></br>
 
 ````sh
 vagrant ssh
@@ -159,7 +164,7 @@ vagrant@ubuntu-focal:~$
 ````
 </br>
 
-On a simple vagrant project, the instance created will be named `default`. In fact, the previously executed command connects directly to vagrant `default` image. We can also run the command using the name seen with the `vagrant status` command.</br></br>
+On a simple [Vagrant](https://developer.hashicorp.com/vagrant/docs) project, the instance created will be named `default`. In fact, the previously executed command connects directly to vagrant `default` image. We can also run the command using the name seen with the `vagrant status` command.</br></br>
 
 ````sh
 vagrant ssh default
@@ -172,10 +177,129 @@ You can check for yourself that we get the same result. Finally, we cant termina
 vagrant@ubuntu-focal:~$ logout
 Connection to 127.0.0.1 closed.
 ````
-</br></br>
+</br>
 
-## Halt vs Suspense
+
+## Suspense
+
+A suspend effectively **saves the exact point-in-time state of the machine**, so that when you resume it later, it begins running immediately from that point, rather than doing a full boot.</br></br>
+
+````sh
+vagrant suspend
+````
+</br>
+
+Once the command is executed we will see a message like this.</br></br>
+
+````sh
+==> default: Saving VM state and suspending execution...
+````
+</br>
+
+Now, if we execute `vagrant status` command again.</br></br>
+
+````sh
+Current machine states:
+
+default                   saved(virtualbox)
+
+To resume this VM, simply run `vagrant up`.
+````
+</br>
+
+We will see that the `default` VM is **saved** now.</br></br>
 
 ## Restart the VM
 
-## Destroy the VM
+I don't know if you have noticed, but in the previous section he has given us a clue. Basically we will always use the `up` command to start a machine.
+</br></br>
+
+````sh
+vagrant up
+````
+</br>
+
+Once the command has been executed, we can use the `vagrant status` command and check that the virtual machine runs correctly again</br></br>
+
+````sh
+Current machine states:
+
+default                 running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to 
+shut it down forcefully, or you can run `vagrant suspend` to simply 
+suspend the virtual machine. In either case, to restart it again, 
+simply run `vagrant up`.
+````
+</br>
+
+## Halt
+
+This command shuts down the running machine. If this fails, or if the `--force` flag is specified, [Vagrant](https://developer.hashicorp.com/vagrant/docs) will effectively just shut off power to the machine.</br></br>
+
+````sh
+vagrant halt
+````
+</br>
+
+Once the command is executed we will see a message like this.</br></br>
+
+````sh
+==> default: Attempting graceful shutdown of VM...
+````
+</br>
+
+Now, if we execute `vagrant status` command again.</br></br>
+
+````sh
+Current machine states:
+
+default                   poweroff(virtualbox)
+
+The VM is powered off. To restart the VM, simply run `vagrant up`
+````
+</br>
+
+We will see that the `default` VM is **poweroff** now.</br></br>
+
+## Destroy
+
+This command **stops the running machine and destroys all resources that were created during the machine creation process**. After running this command, your computer should be left at a clean state, as if you never created the guest machine in the first place.</br></br>
+
+````sh
+vagrant destroy
+````
+</br>
+
+When we execute the command, it will show us a confirmation message.</br></br>
+
+````sh
+default: Are you sure you want to destroy the 'default' VM? [y/N]
+````
+</br>
+
+Once confirmed by entering `y`, it will start to shut down the virtual machine and remove the associated resources.</br></br>
+
+````sh
+default: Are you sure you want to destroy the 'default' VM? [y/N] y
+==> default: Forcing shutdown of VM...
+==> default: Destroying VM and associated drives...
+````
+</br>
+
+
+At this point, if we execute the `vagrant status` command, we will see that the default virtual machine appears as **not created**.</br></br>
+
+````sh
+Current machine states:
+
+default                   not created (virtualbox)
+
+The environment has not yet been created. Run `vagrant up` to 
+create the environment. If a machine is not created, only the 
+default provider will be shown. So if a provider is not listed, 
+then the machine is not created for that environment. 
+````
+</br>
+
+That's all, I hope you found it useful.
