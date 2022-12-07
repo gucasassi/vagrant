@@ -1,6 +1,6 @@
 # Getting Started
 
-In this tutorial, you will create your first development environment with **Vagrant**. This quick start provides a brief introduction to **Vagrant**, its prerequisites, and an overview of the most important **Vagrant** commands to understand.</br></br>
+In this tutorial, you will create your first development environment with [Vagrant](https://developer.hashicorp.com/vagrant/docs). This quick start provides a brief introduction to [Vagrant](https://developer.hashicorp.com/vagrant/docs), its prerequisites, and an overview of the most important [Vagrant](https://developer.hashicorp.com/vagrant/docs) commands to understand.</br></br>
 
 
 ## Create a directory
@@ -9,14 +9,19 @@ Make a new directory for the project you will work on throughout these tutorials
 
 ````sh
 mkdir getting-started
+````
+</br>
+
+Once the directory is created, we will access it with the `cd`command.</br></br>
+
+````sh
 cd getting-started
 ````
 </br>
 
+The first step to configure any [Vagrant](https://developer.hashicorp.com/vagrant/docs) project is to create a [Vagrantfile](https://developer.hashicorp.com/vagrant/docs/vagrantfile). The [Vagrantfile](https://developer.hashicorp.com/vagrant/docs/vagrantfile) allows you to describe the kind of machine and resources you need to run your project, as well as what software to install and how you want to access it.</br></br>
 
 ## Initialize a Project Directory
-
-The first step to configure any **Vagrant** project is to create a `Vagrantfile`. The `Vagrantfile` allows you to describe the kind of machine and resources you need to run your project, as well as what software to install and how you want to access it.</br>
 
 Vagrant has a built-in command for initializing a project, `vagrant init`, which can take a box name as arguments.</br></br>
 
@@ -25,7 +30,8 @@ vagrant init ubuntu/focal64
 ````
 </br>
 
-The above command allows us to initialize the directory and specify the box to use, in this case `ubuntu/focal64`.</br></br>
+The above command allows us to initialize the directory and specify the box to use, in this case `ubuntu/focal64`.
+Once the command is executed we will see a message like this.</br></br>
 
 ````sh
 A `Vagrantfile` has been placed in this directory. You are now
@@ -40,7 +46,7 @@ You now have a `Vagrantfile` in your current directory.</br></br>
 
 ## Bring up a virtual machine
 
-Now that you have initialized your project and configured a box for it to use, it is time to boot your first **Vagrant** environment. Run the following command from your terminal:</br></br>
+Now that you have initialized your project and configured a box for it to use, it is time to boot your first [Vagrant](https://developer.hashicorp.com/vagrant/docs) environment. Run the following command from your terminal:</br></br>
 
 ````sh
 vagrant up
@@ -68,9 +74,11 @@ default: 22 (guest) => 2222 (host) (adapter 1)
 ==> default: Waiting for machine to boot. This may take a few minutes...                                                    
 default: SSH address: 127.0.0.1:2222                                                                                    
 default: SSH username: vagrant                                                                                          
-default: SSH auth method: private key                                                                                   default:                                                                                                                
+default: SSH auth method: private key                                                                                   
+default:                                                                                                                
 default: Vagrant insecure key detected. Vagrant will automatically replace                                              
-default: this with a newly generated keypair for better security.                                                       default:                                                                                                                
+default: this with a newly generated keypair for better security.                                                       
+default:                                                                                                                
 default: Inserting generated public key within guest...                                                                 
 default: Removing insecure key from the guest if it present...                                                        
 default: Key inserted! Disconnecting and reconnecting using new SSH key...                                          
@@ -81,7 +89,8 @@ default: VirtualBox! In most cases this is fine, but in rare cases it can
 default: prevent things such as shared folders from working properly. If you see                                        
 default: shared folder errors, please make sure the guest additions within the                                          
 default: virtual machine match the version of VirtualBox you have installed on                                          
-default: your host and reload your VM.                                                                                  default:                                                                                                                
+default: your host and reload your VM.                                                                                  
+default:                                                                                                                
 default: Guest Additions Version: 6.1.38                                                                                
 default: VirtualBox Version: 7.0                                                                                    
 ==> default: Mounting shared folders...                                                                                     
@@ -89,14 +98,14 @@ default: /vagrant => 01-getting-started
 ````
 </br>
 
-You will not actually see anything though, since **Vagrant** runs the virtual machine **without a UI**. To prove that it is running, you can use `vagrant status` command.</br></br>
+You will not actually see anything though, since [Vagrant](https://developer.hashicorp.com/vagrant/docs) runs the virtual machine **without a user interface**. To prove that it is running, you can use `vagrant status` command.</br></br>
 
 ````sh
 vagrant status
 ````
 </br>
 
-Result of execute `vagrant status` command.</br></br>
+Once the command is executed we will see a message like this.</br></br>
 
 
 ````sh
@@ -104,17 +113,66 @@ Current machine states:
 
 default                 running (virtualbox)
 
-The VM is running. To stop this VM, you can run `vagrant halt` to shut it down forcefully, or you can run `vagrant suspend` to simply suspend the virtual machine. In either case, to restart it again, simply run `vagrant up`.
+The VM is running. To stop this VM, you can run `vagrant halt` to shut it down forcefully, or 
+you can run `vagrant suspend` to simply suspend the virtual machine. In either case, 
+to restart it again, simply run `vagrant up`.
 ````
 </br>
 
-As we can see, there is a machine running with **virtualbox**. At the moment, let's ignore the message that tells us how to stop the **VM**. At the end of this guide we will see how we can [shut it down](#halt-vs-suspense), [suspend](#halt-vs-suspense) and [restart](#restart-the-vm) a **VM**.</br></br>
- To prove that it is running, you can [SSH into the machine](#ssh-into-the-machine).</br></br>
+As we can see, there is a machine running with [Virtualbox](https://www.virtualbox.org). At the moment, let's ignore the message that tells us how to stop the **VM**. At the end of this guide we will see how we can [shut it down](#halt-vs-suspense), [suspend](#halt-vs-suspense) and [restart](#restart-the-vm) a **VM**.
 
+So far we have been able to build our virtual machine, but how do we access it?</br></br>
 
 ## SSH into the machine
 
-To prove that it is running, you can SSH into the machine.</br></br>
+Vagrant provide us the `ssh` command, this will connect into a running Vagrant machine and give us access to a shell.</br></br>
+
+````sh
+vagrant ssh
+````
+</br>
+
+Once the command is executed we will see a message like this.</br></br>
+
+````sh
+Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.4.0-135-generic x86_64)
+
+* Documentation:  https://help.ubuntu.com                                                                               
+* Management:     https://landscape.canonical.com                                                                       
+* Support:        https://ubuntu.com/advantage
+
+System information as of Wed Dec  7 13:58:07 UTC 2022                                                                                         
+
+System load:  1.06              Processes:               119                                                            
+Usage of /:   3.6% of 38.70GB   Users logged in:         0                                                              
+Memory usage: 21%               IPv4 address for enp0s3: 10.0.2.15                                                     
+Swap usage:   0%                                                                                                                             
+
+
+0 updates can be applied immediately.                                                                                                         
+
+New release '22.04.1 LTS' available.                                                                                    
+Run 'do-release-upgrade' to upgrade to it.                                                                                                   
+
+
+vagrant@ubuntu-focal:~$ 
+````
+</br>
+
+On a simple vagrant project, the instance created will be named `default`. In fact, the previously executed command connects directly to vagrant `default` image. We can also run the command using the name seen with the `vagrant status` command.</br></br>
+
+````sh
+vagrant ssh default
+````
+</br>
+
+You can check for yourself that we get the same result. Finally, we cant terminate the SSH session with `CTRL+D`, or by logging out.</br></br>
+
+````sh
+vagrant@ubuntu-focal:~$ logout
+Connection to 127.0.0.1 closed.
+````
+</br></br>
 
 ## Halt vs Suspense
 
