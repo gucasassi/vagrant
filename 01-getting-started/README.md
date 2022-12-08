@@ -28,12 +28,11 @@ The first step to configure any [Vagrant](https://developer.hashicorp.com/vagran
 Vagrant has a built-in command for initializing a project, `vagrant init`, which can take a box name as arguments.</br></br>
 
 ````sh
-vagrant init ubuntu/focal64
+vagrant init ubuntu/focal64 -m
 ````
 </br>
 
-The above command allows us to initialize the directory and specify the box to use, in this case `ubuntu/focal64`.
-Once the command is executed we will see a message like this.</br></br>
+The above command allows us to initialize the directory and specify the box to use, in this case `ubuntu/focal64`. The `m` flag allow as to create a `Vagrantfile` that does not contain the instructional comments that the normal `Vagrantfile` contains. Once the command is executed we will see a message like this.</br></br>
 
 ````sh
 A `Vagrantfile` has been placed in this directory. You are now
