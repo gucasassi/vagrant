@@ -1,3 +1,5 @@
+<font size="1">8 min</font>
+
 # Synced Folders
 
 Virtual machines are convenient for developing in, but not many people want to edit files using a plain terminal-based editor over SSH. [Vagrant](https://developer.hashicorp.com/vagrant/docs) automatically syncs files to and from the guest machine. This way you can edit files locally and run them in your virtual development environment.
@@ -50,4 +52,4 @@ vagrant@ubuntu-focal:~$ exit
 
 List the contents of your local directory, and notice that the new file `synced-test.txt` you created on your virtual machine is reflected there.
 
-That's all, I hope you found it useful. In the next section we will learn how to  [configure basic settings of a VM using Vagrantfile](/03-vagrantfile/README.md).
+That's all, I hope you found it useful. In the next section we will talk about  [Vagrantfiles](/03-vagrantfile/README.md).
