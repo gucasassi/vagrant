@@ -301,4 +301,4 @@ then the machine is not created for that environment.
 ````
 </br>
 
-That's all, I hope you found it useful.
+That's all, I hope you found it useful. In the next section we will see how to [synchronize folders](/02-synced-folders/README.md)  between host and guest virtual machine.
