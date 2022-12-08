@@ -1,4 +1,4 @@
-<font size="2">10 minutes</font>
+<font size="1">12 min</font>
 
 # Getting Started
 
