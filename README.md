@@ -8,3 +8,5 @@ This repository wants to be a learning guide to introduce yourself to the world 
 [02 - Synced Folders:](/02-synced-folders/README.md) 
 Virtual machines are convenient for development, but not many people want to edit files using a simple terminal-based editor over SSH. In this section we are going to see how to sync files to and from the guest machine with [Vagrant](https://developer.hashicorp.com/vagrant/docs).</br></br> 
 
+[03 - Vagrantfile:](/03-vagrantfile/README.md) We will see what `Vagrantfile` is and what its structure is. We will explain the order to load the `Vagrantfile` and we will learn to configure basic settings of a VM.</br></br> 
+
